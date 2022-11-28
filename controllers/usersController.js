@@ -130,7 +130,8 @@ export const getAllUsers = async (req,res, next) => {
 
         //
         if(req.file){
-            user.profileImage = `http://localhost:4000/${req.file.filename}`
+           // user.profileImage = `http://localhost:4000/${req.file.filename}`
+           user.profileImage = `/${req.file.filename}`
         }
 
         await user.save()
@@ -159,7 +160,8 @@ export const getAllUsers = async (req,res, next) => {
         //first we need to find the user
         let user = await UsersCollection.findById(req.params.id)
         if(req.file){
-            user.profileImage = `http://localhost:4000/${req.file.filename}`
+            //user.profileImage = `http://localhost:4000/${req.file.filename}`
+            user.profileImage = `/${req.file.filename}`
         }
 
      
