@@ -72,7 +72,7 @@ const storage = multer.diskStorage({
         cb(null,fileName)
     }
 })
-const upload = multer({storage: storage}) /
+const upload = multer({storage: storage}) 
 
 
 // serve static files/pages
