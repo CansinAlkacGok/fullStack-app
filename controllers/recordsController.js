@@ -63,9 +63,14 @@ export const createRecord = async (req,res, next) => {
         //console.log(req.body);//undefined. we are not getting what we typed to thunderClient. we need to add express json middleware in app.js to parse any incoming json data. after that we got the data above in the terminal
         
         const record = new RecordsCollection(req.body)
+        //we need to check if any file coming with req
+        if(req.file){
+            record.img = `/${req.file.filename}`
+        }
         await record.save() // we need to save the data because this is the promise and if we send response then we cannot save it so fist save it.
         //res.json({success:true, record: record})
-        res.json({success:true, record}) // when we check database we are seeing it at the records collection
+        //res.json({success:true, record}) // when we check database we are seeing it at the records collection
+        res.json({success:true, data: record})
     }
     catch(err){
         //res.json({success:false, message: err.message})

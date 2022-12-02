@@ -87,7 +87,7 @@ app.get("/",(req,res)=> {
     
 }) 
 
-//Customer middleware
+//Custom middleware
 
 //function log(req,res,next){
 //    console.log("I am a middleware")
@@ -164,7 +164,7 @@ app.use("/users",upload.single('image'), usersRoute);
 
 // "/records" GET POST PATCH DELETE
 //app.use(recordsRoute);
-app.use("/records",recordsRoute);
+app.use("/records",upload.single("image"),recordsRoute);
 
 // "/orders" GET POST PATCH DELETE
 //app.use(ordersRoute);
